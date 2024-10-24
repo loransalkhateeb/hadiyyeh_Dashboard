@@ -1,0 +1,25 @@
+.table-responsive {
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+  }
+  
+  .table {
+    min-width: 600px; 
+  }
+  .delete_icon{
+    color: red;
+    margin: 8px;
+  }
+  .edit_icon{
+    color: green;
+  }
+
+.form_res{
+    /* width: 100%; */
+    margin-top: 15vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    /* place-items: center; */
+}
