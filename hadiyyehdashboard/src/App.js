@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SideBar from './Components/SideBar'; // Adjust the path as necessary
@@ -20,6 +21,20 @@ function App() {
         <SideBar/>
         </>
     );
+
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./Components/Header";
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <Routes></Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
