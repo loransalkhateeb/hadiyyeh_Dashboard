@@ -1,3 +1,14 @@
+
+import React from 'react'
+
+function Header() {
+  return (
+    <div>Header</div>
+  )
+}
+
+export default Header
+
 import React from "react";
 import { BiLogOut } from "react-icons/bi";
 
@@ -34,3 +45,4 @@ function Header() {
 }
 
 export default Header;
+
