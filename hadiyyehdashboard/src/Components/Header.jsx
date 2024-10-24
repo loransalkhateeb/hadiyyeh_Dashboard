@@ -12,7 +12,7 @@ function Header() {
   };
 
   return (
-    <div className="wrapper ">
+    <div className="wrapper main_header">
       <nav id="sidebar" className={isActive ? "active" : ""}>
         <div className="sidebar-header">
         <img
