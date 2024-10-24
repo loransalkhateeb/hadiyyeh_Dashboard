@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiLogOut } from "react-icons/bi";
 import '../Styles/Header.css';
 import { IoMenu } from "react-icons/io5";
@@ -75,3 +75,4 @@ function Header() {
 }
 
 export default Header;
+
