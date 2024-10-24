@@ -4,6 +4,8 @@ import '../Styles/Header.css';
 import { IoMenu } from "react-icons/io5";
 import { MdMenuOpen } from "react-icons/md";
 import {Link,Outlet} from 'react-router-dom'
+import { useState } from "react";
+
 function Header() {
   const [isActive, setIsActive] = useState(false);
 
@@ -62,8 +64,6 @@ function Header() {
 
             <button className="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <IoMenu />            </button>
-
-       
           </div>
         </nav>
         <Outlet />
