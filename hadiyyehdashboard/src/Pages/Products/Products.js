@@ -1,8 +1,12 @@
+import React from 'react';
 
-
-export default function Products(){
-    return(
-        <>
-        <h1>This is the products page</h1></>
-    )
+function Products() {
+  return (
+    <div>
+      <h2>Products</h2>
+      <p>This is the Products page content.</p>
+    </div>
+  );
 }
+
+export default Products;
