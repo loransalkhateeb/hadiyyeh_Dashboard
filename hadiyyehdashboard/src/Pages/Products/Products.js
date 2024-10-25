@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const DataFetchingComponent = () => {
   const [data, setData] = useState([]);
@@ -9,11 +8,11 @@ const DataFetchingComponent = () => {
 
   const navigate = useNavigate(); 
 
-  
   const fetchData = async () => {
     setLoading(true);
     try {
       const response = await fetch('http://localhost:1010/product/get/allproducts'); 
+      console.log(response.error)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -30,15 +29,14 @@ const DataFetchingComponent = () => {
     fetchData();
   }, []); 
 
-  const handleDelete = async (productId) => {
-    console.log('Deleting:', productId);
-    const response = await fetch(`http://localhost:1010/product/delete/${productId}`, {
+  const handleDelete = async (id) => {
+    console.log('Deleting:', id);
+    const response = await fetch(`http://localhost:1010/product/delete/${id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
-     
-      setData((prevData) => prevData.filter(product => product.id !== productId));
+      fetchData();
     } else {
       const errorMessage = await response.text(); 
       console.error('Failed to delete the product:', errorMessage);
