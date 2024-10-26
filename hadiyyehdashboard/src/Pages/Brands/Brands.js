@@ -48,7 +48,7 @@ function Brands() {
   return (
     <div>
       <Link to="/addbrand">
-        <button type="button" className="btn btn-info d-flex justify-content-start px-4 py-2">
+        <button type="button" className="btn btn-info d-flex justify-content-start px-4 py-2 mb-3">
           Add Brand
         </button>
       </Link>
