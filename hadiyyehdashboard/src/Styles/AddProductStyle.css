@@ -1,0 +1,16 @@
+.btn-danger{
+   width:120px;
+    height: 50px;
+}
+
+.btn-success {
+    margin-top: 40px;
+    width: 500px;
+    height: 50px;
+  }
+
+  .btn-secondary{
+    width:120px;
+    height: 50px;
+    margin-left: 40px;
+  }
