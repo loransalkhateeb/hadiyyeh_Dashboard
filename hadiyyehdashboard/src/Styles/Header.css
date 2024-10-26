@@ -145,6 +145,21 @@ a.article:hover {
     min-height: 100vh;
     transition: all 0.3s;
 }
+.btn_togglesidebar {
+    background-color: #000; /* Set your desired background color */
+    color: #fff; /* Set text/icon color */
+    border: none; /* Remove border if needed */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn_togglesidebar:hover {
+    background-color: #333; /* Change on hover for effect */
+}
+
+.btn_togglesidebar:focus {
+    outline: none; /* Remove outline on focus */
+    background-color: #000; /* Change when focused, if desired */
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES

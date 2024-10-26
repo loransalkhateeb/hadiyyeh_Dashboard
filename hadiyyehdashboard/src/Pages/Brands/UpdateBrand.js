@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../../App";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 function UpdateBrand() {
   const [brand_name, setBrandName] = useState("");
   const [brand_img, setBrandImg] = useState(null);
@@ -36,14 +38,26 @@ function UpdateBrand() {
           "Content-Type": "multipart/form-data",
         },
       });
+      Swal.fire({
+        title: "Success!",
+        text: "Brand Updated successful.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
       navigate("/brands"); // Redirect to the brands page or any other page
     } catch (error) {
       console.error(error);
-      alert("Failed to update brand");
-    }
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to add. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });    }
   };
   return (
     <div className="container ">
+            <h1>Update Brand</h1>
+
       <form className="form_res" onSubmit={handleUpdateBrand}>
         <div className="mb-3">
           <label htmlFor="brandName" className="form-label">

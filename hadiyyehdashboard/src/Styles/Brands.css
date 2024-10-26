@@ -1,7 +1,8 @@
+
 .table-responsive {
-    overflow-x: auto; 
+  overflow-x: auto;
     -webkit-overflow-scrolling: touch; 
-  }
+}
   
   .table {
     min-width: 600px; 
@@ -16,7 +17,7 @@
 
 .form_res{
     /* width: 100%; */
-    margin-top: 15vh;
+    margin-top: 13vh;
     display: grid;
     justify-content: center;
     align-items: center;
