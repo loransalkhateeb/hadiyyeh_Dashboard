@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const UpdateProduct = () => {
   const { id } = useParams(); 
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [AllData, setFormData] = useState({
     name: '',
     sale: '',
     instock: '',
@@ -19,18 +19,20 @@ const UpdateProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:1010/product/get/${id}`);
-        if (response.ok) {
-          const product = await response.json();
+        console.log(id)
+        const response = await fetch(`http://localhost:1010/product/${id}`);
+        if (response.ok) {          
+          const Bobject = await response.json();
+          const product = Bobject.product;
           setFormData({
             name: product.name || '',
             sale: product.sale || '',
             instock: product.instock || '',
             brandID: product.brandID || '',
-            brandName: product.brandName || '',
+            brand_name: product.brand_name || '',
             firstImage: product.firstImage || '',
-            afterPrice: product.afterPrice || '',
-            beforePrice: product.beforePrice || '',
+            after_price: product.after_price || '',
+            before_price: product.before_price || '',
           });
         } else {
           console.error('Failed to fetch product');
@@ -44,7 +46,7 @@ const UpdateProduct = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...AllData, [name]: value });
   };
 
   const handleUpdate = async () => {
@@ -53,7 +55,7 @@ const UpdateProduct = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(AllData),
     });
 
     if (response.ok) {
@@ -105,13 +107,13 @@ const UpdateProduct = () => {
       <form>
         {[
           { label: 'Name', name: 'name', type: 'text' },
-          { label: 'Sale', name: 'sale', type: 'number' },
+          { label: 'Sale', name: 'sale', type: 'text' },
           { label: 'In Stock', name: 'instock', type: 'number' },
           { label: 'Brand ID', name: 'brandID', type: 'text' },
-          { label: 'Brand Name', name: 'brandName', type: 'text' },
+          { label: 'Brand Name', name: 'brand_name', type: 'text' },
           { label: 'First Image', name: 'firstImage', type: 'text' },
-          { label: 'After Price', name: 'afterPrice', type: 'number' },
-          { label: 'Before Price', name: 'beforePrice', type: 'number' },
+          { label: 'After Price', name: 'after_price', type: 'number' },
+          { label: 'Before Price', name: 'before_price', type: 'number' },
         ].map(({ label, name, type }) => (
           <div className="mb-3 row" key={name}>
             <label htmlFor={name} className="col-sm-2 col-form-label">{label}:</label>
@@ -121,7 +123,7 @@ const UpdateProduct = () => {
                 className="form-control"
                 id={name}
                 name={name}
-                value={formData[name]} 
+                value={AllData?.[name]} 
                 onChange={handleChange}
                 required
               />
