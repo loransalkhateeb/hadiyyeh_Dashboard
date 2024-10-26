@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-// import '@fortawesome/fontawesome-free/css/all.min.css';
+import Swal from 'sweetalert2';
 
 const DataFetchingComponent = () => {
   const [data, setData] = useState([]);
@@ -31,18 +31,35 @@ const DataFetchingComponent = () => {
   }, []); 
 
   const handleDelete = async (id) => {
-    console.log('Deleting:', id);
-    const response = await fetch(`http://localhost:1010/product/delete/${id}`, {
-      method: 'DELETE',
+    const { isConfirmed } = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
     });
-
-    if (response.ok) {
-      fetchData();
+  
+    if (isConfirmed) {
+      console.log('Deleting:', id);
+      const response = await fetch(`http://localhost:1010/product/delete/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        fetchData();
+        Swal.fire('Deleted!', 'Your product has been deleted.', 'success');
+      } else {
+        const errorMessage = await response.text(); 
+        console.error('Failed to delete the product:', errorMessage);
+        Swal.fire('Error!', 'Failed to delete the product.', 'error');
+      }
     } else {
-      const errorMessage = await response.text(); 
-      console.error('Failed to delete the product:', errorMessage);
+      console.log('Delete action was cancelled.');
     }
   };
+  
+  
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
